@@ -3,6 +3,7 @@ package com.patrykkrych.bankapp.repository;
 import com.patrykkrych.bankapp.entity.Transaction;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -12,6 +13,7 @@ public class TransactionRepositoryImpl implements TransactionRepository {
 
     private EntityManager entityManager;
 
+    @Autowired
     public TransactionRepositoryImpl(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
