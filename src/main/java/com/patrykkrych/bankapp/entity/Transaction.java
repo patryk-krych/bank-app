@@ -21,7 +21,7 @@ public class Transaction {
     @JoinColumn(name = "to_account_id")
     private Account toAccount;
 
-    @Column(name="ammount")
+    @Column(name="amount")
     private Double amount;
 
     @Column(name="currency")

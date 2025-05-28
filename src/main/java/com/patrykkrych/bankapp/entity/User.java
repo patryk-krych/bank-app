@@ -1,6 +1,7 @@
 package com.patrykkrych.bankapp.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -35,6 +36,7 @@ public class User {
     private LocalDateTime createdAt;
 
     @OneToMany(mappedBy = "user")
+    @JsonManagedReference
     private List<Account> accounts = new ArrayList<>();
 
     public User() {

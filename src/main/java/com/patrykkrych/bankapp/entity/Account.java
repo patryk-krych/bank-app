@@ -1,5 +1,8 @@
 package com.patrykkrych.bankapp.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -17,10 +20,11 @@ public class Account {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
+    @JsonBackReference
     private User user;
 
     @Column(name="account_number")
-    private int accountNumber;
+    private String accountNumber;
 
     @Column(name="balance")
     private Double balance;
@@ -32,16 +36,18 @@ public class Account {
     private LocalDateTime createdAt;
 
     @OneToMany(mappedBy = "fromAccount")
+    @JsonIgnore
     private List<Transaction> sentTransactions = new ArrayList<>();
 
     @OneToMany(mappedBy = "toAccount")
+    @JsonIgnore
     private List<Transaction> receivedTransactions = new ArrayList<>();
 
     public Account() {
 
     }
 
-    public Account(int accountNumber, Double balance, String currency, LocalDateTime createdAt) {
+    public Account(String accountNumber, Double balance, String currency, LocalDateTime createdAt) {
         this.accountNumber = accountNumber;
         this.balance = balance;
         this.currency = currency;
@@ -64,11 +70,16 @@ public class Account {
         this.user = user;
     }
 
-    public int getAccountNumber() {
+    @JsonProperty("userId")
+    public int getUserId() {
+        return user != null ? user.getId() : null;
+    }
+
+    public String getAccountNumber() {
         return accountNumber;
     }
 
-    public void setAccountNumber(int accountNumber) {
+    public void setAccountNumber(String accountNumber) {
         this.accountNumber = accountNumber;
     }
 
