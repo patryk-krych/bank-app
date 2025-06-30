@@ -44,6 +44,14 @@ public class Transaction {
         this.title = title;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public Account getFromAccount() {
         return fromAccount;
     }
