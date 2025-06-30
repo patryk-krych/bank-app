@@ -67,11 +67,4 @@ public class UserRestController {
         return "Deleted user with id - " + userId;
     }
 
-
-
-
-
-
-
-
 }
