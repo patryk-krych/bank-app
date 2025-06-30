@@ -8,9 +8,9 @@ public interface AccountService {
 
     List<Account> findAll();
 
-    Account findById(int theId);
+    Account findById(String theId);
 
     Account save(Account theAccount);
 
-    void deleteById(int theId);
+    void deleteById(String theId);
 }

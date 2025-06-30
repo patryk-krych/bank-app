@@ -13,13 +13,11 @@ import java.util.List;
 @RequestMapping("/api")
 public class AccountRestController {
 
-    private final UserService userService;
     private AccountService accountService;
 
     @Autowired
-    public AccountRestController(AccountService accountService, UserService userService) {
+    public AccountRestController(AccountService accountService) {
         this.accountService = accountService;
-        this.userService = userService;
     }
 
     @GetMapping("/accounts")
@@ -28,7 +26,7 @@ public class AccountRestController {
     }
 
     @GetMapping("/accounts/{accountId}")
-    public Account getAccount(@PathVariable int accountId){
+    public Account getAccount(@PathVariable String accountId){
         Account theAccount= accountService.findById(accountId);
 
         if(theAccount==null){
@@ -46,30 +44,26 @@ public class AccountRestController {
         return dbAccount;
     }
 
-    @PutMapping("/users")
+    @PutMapping("/accounts")
     public Account updateAccount(@RequestBody Account theAccount){
         Account dbAccount = accountService.save(theAccount);
 
         return dbAccount;
     }
 
-    @DeleteMapping("/users/{userId}")
-    public String deleteAccount(@PathVariable int userId){
+    @DeleteMapping("/accounts/{accountId}")
+    public String deleteAccount(@PathVariable String accountId){
 
-        Account tempAccout = accountService.findById(userId);
+        Account tempAccount = accountService.findById(accountId);
 
-        if(tempAccout==null){
-            throw new RuntimeException("Account with id - " + userId + " not found");
+        if(tempAccount==null){
+            throw new RuntimeException("Account with id - " + accountId + " not found");
         }
 
-        userService.deleteById(userId);
+        accountService.deleteById(accountId);
 
-        return "Account with id - " + userId + " deleted";
+        return "Account with id - " + accountId + " deleted";
     }
-
-
-
-
 
 
 
