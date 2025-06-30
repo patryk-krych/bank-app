@@ -3,6 +3,7 @@ package com.patrykkrych.bank_app.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name="users")
@@ -27,6 +28,9 @@ public class User {
 
     @Column(name="birthday")
     private LocalDate birthday;
+
+    @OneToMany(mappedBy="user")
+    private List<Account> accounts;
 
     public User() {}
 
