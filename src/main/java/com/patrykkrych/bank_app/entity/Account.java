@@ -3,6 +3,7 @@ package com.patrykkrych.bank_app.entity;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Table(name="accounts")
@@ -21,6 +22,13 @@ public class Account {
 
     @Column(name="balance")
     private BigDecimal balance;
+
+    @OneToMany(mappedBy = "fromAccount")
+    private List<Transaction> outgoingTransactions;
+
+    @OneToMany(mappedBy = "toAccount")
+    private List<Transaction> incomingTransactions;
+
 
     public Account() {}
 
@@ -62,5 +70,21 @@ public class Account {
 
     public void setBalance(BigDecimal balance) {
         this.balance = balance;
+    }
+
+    public List<Transaction> getOutgoingTransactions() {
+        return outgoingTransactions;
+    }
+
+    public void setOutgoingTransactions(List<Transaction> outgoingTransactions) {
+        this.outgoingTransactions = outgoingTransactions;
+    }
+
+    public List<Transaction> getIncomingTransactions() {
+        return incomingTransactions;
+    }
+
+    public void setIncomingTransactions(List<Transaction> incomingTransactions) {
+        this.incomingTransactions = incomingTransactions;
     }
 }
