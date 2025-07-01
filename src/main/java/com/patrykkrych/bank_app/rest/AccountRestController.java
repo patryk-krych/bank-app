@@ -2,9 +2,12 @@ package com.patrykkrych.bank_app.rest;
 
 
 import com.patrykkrych.bank_app.entity.Account;
+import com.patrykkrych.bank_app.entity.User;
 import com.patrykkrych.bank_app.service.AccountService;
 import com.patrykkrych.bank_app.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,10 +17,12 @@ import java.util.List;
 public class AccountRestController {
 
     private AccountService accountService;
+    private UserService userService;;
 
     @Autowired
-    public AccountRestController(AccountService accountService) {
+    public AccountRestController(AccountService accountService, UserService userService) {
         this.accountService = accountService;
+        this.userService = userService;
     }
 
     @GetMapping("/accounts")
@@ -34,6 +39,18 @@ public class AccountRestController {
         }
 
         return theAccount;
+    }
+
+    @GetMapping("/myaccounts")
+    public List<Account> getAccountsForLoggedUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String userIdString = authentication.getName();  // to jest to co zwracasz jako "username" w MyUserDetailsService
+
+        int userId = Integer.parseInt(userIdString);     // jeśli username to ID w stringu
+
+        User user = userService.findById(userId);
+
+        return accountService.findByUser(user);
     }
 
     @PostMapping("/accounts")

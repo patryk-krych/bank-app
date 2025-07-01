@@ -1,6 +1,7 @@
 package com.patrykkrych.bank_app.service;
 
 import com.patrykkrych.bank_app.entity.Account;
+import com.patrykkrych.bank_app.entity.User;
 import com.patrykkrych.bank_app.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -49,5 +50,10 @@ public class AccountServiceImpl implements AccountService{
     @Override
     public void deleteById(String theId) {
         accountRepository.deleteById(theId);
+    }
+
+    @Override
+    public List<Account> findByUser(User user) {
+        return accountRepository.findByUser(user); // <-- TUTAJ TO
     }
 }
