@@ -35,9 +35,9 @@ public class MyUserDetailsService implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with id: " + userId));
 
         return new org.springframework.security.core.userdetails.User(
-                String.valueOf(user.getId()),                 // login (username) jako String
-                user.getPassword(),                           // hasło użytkownika (tu niehashowane)
-                Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"))  // lista uprawnień (rola)
+                String.valueOf(user.getId()),
+                user.getPassword(),
+                Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"))
         );
 
     }
