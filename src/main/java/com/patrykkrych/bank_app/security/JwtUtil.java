@@ -10,7 +10,7 @@ import java.util.Date;
 @Component
 public class JwtUtil {
     private final String SECRET = "supersecretkeythatissupposedtobe32byteslong!!";
-    private final long EXPIRATION_TIME = 86400000; // 1 day
+    private final long EXPIRATION_TIME = 20 * 60000; // ustawiamy liczbę minut
 
     private Key getSigningKey() {
         return Keys.hmacShaKeyFor(SECRET.getBytes());
