@@ -54,6 +54,6 @@ public class AccountServiceImpl implements AccountService{
 
     @Override
     public List<Account> findByUser(User user) {
-        return accountRepository.findByUser(user); // <-- TUTAJ TO
+        return accountRepository.findByUser(user);
     }
 }
