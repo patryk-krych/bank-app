@@ -1,4 +1,4 @@
-☕ Bank App – Backend
+# ☕ Bank App – Backend
 This is the backend for a simple banking application built with Spring Boot. It provides RESTful APIs for user authentication, profile management, and secure interaction with the frontend via JWT authentication. 🔐
 
 The frontend is built with Angular ⚛️
