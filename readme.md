@@ -8,14 +8,11 @@ The frontend is built with Angular ⚛️
 🚧 The application is not finished
 
 ✅ Currently implemented functions:
-
-🔑 User login with JWT authentication
-
-👤 Retrieving user profile data
-
-🛡️ Secured endpoints with Spring Security and stateless sessions
+- 🔑 User login with JWT authentication
+- 👤 Retrieving user profile data
+- 🛡️ Secured endpoints with Spring Security and stateless sessions
 
 🗄️ Database setup
-This project requires a database to be set up before running. You can find the SQL script to create and initialize 
+- This project requires a database to be set up before running. You can find the SQL script to create and initialize
 the database schema in the file init-db.sql.
 
