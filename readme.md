@@ -15,4 +15,5 @@ The frontend is built with Angular ⚛️
 🗄️ Database setup
 - This project requires a database to be set up before running. You can find the SQL script to create and initialize
 the database schema in the file init-db.sql.
+- Don't forget to change application properties
 
