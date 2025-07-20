@@ -3,7 +3,7 @@ This is the backend for a simple banking application built with Spring Boot. It 
 
 The frontend is built with Angular ⚛️
 
-➡️ Frontend repository: https://github.com/patryk-krych/bank-app-frontend
+➡️ Frontend repository: https://github.com/patryk-krych/bank-app-fronted
 
 🚧 The application is not finished
 
